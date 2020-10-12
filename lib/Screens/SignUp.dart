@@ -23,7 +23,7 @@ class _SignUpState extends State<SignUp>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.pink[200],
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.only(left: 16,right: 16),
@@ -107,6 +107,7 @@ class _SignUpState extends State<SignUp>{
                   SizedBox(height: 30,),
                   Container(
                     height: 50,
+                    color: Colors.blueGrey,
                     child: FlatButton(
                       onPressed: (){
                         signUp();

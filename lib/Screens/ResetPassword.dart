@@ -38,7 +38,7 @@ class _ResetPageState extends State<ResetPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.green[200],
       body: SafeArea(
         
         child: Container(
