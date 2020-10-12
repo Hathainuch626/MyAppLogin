@@ -26,7 +26,6 @@ class _SignUpState extends State<SignUp>{
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          
           padding: EdgeInsets.only(left: 16,right: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,7 +37,7 @@ class _SignUpState extends State<SignUp>{
                   SizedBox(height: 50,),
                   Text("สร้างบัญชีผู้ใช้ใหม่",style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold, color: Colors.white),),
                   SizedBox(height: 6,),
-                  Text("โดยการใช้อีเมลล์ของคุณ",style: TextStyle(fontSize: 20,color: Colors.white),),
+                  Text("โดยการใช้อีเมลของคุณ",style: TextStyle(fontSize: 20,color: Colors.white),),
                 ],
               ),
               Column(
@@ -48,7 +47,7 @@ class _SignUpState extends State<SignUp>{
                     child: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        labelText: "อีเมลล์",
+                        labelText: "อีเมล",
                         labelStyle: TextStyle(fontSize: 20,color: Colors.grey.shade400,fontWeight: FontWeight.w600),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),

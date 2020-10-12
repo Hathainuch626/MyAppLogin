@@ -1,4 +1,3 @@
-  
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,44 +5,52 @@ import 'package:myown/Screens/ResetPassword.dart';
 import 'HomePage.dart';
 import 'SignUp.dart';
 
-
 // class MyLoginPage extends StatefulWidget {
 //   MyLoginPage({Key key}) : super(key: key);
- 
+
 //   @override
 //   _MyLoginPageState createState() => _MyLoginPageState();
 // }
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
- 
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-
-class _LoginPageState extends State<LoginPage>{
-
+class _LoginPageState extends State<LoginPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
-
-@override
- void initState() {
+  @override
+  void initState() {
     super.initState();
     checkAuth(context);
- }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-     
-      backgroundColor: Colors.deepOrange,
+      
       body: SafeArea(
+      
         child: Container(
-          
-          padding: EdgeInsets.only(left: 16,right: 16),
+          decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        colors: [
+          Color(0xFFF7C41D),
+          Color(0xFFDB6697),
+          Color(0xFF2BB2DB),
+          ],
+        ),
+      ),
+          padding: EdgeInsets.only(left: 16, right: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,28 +58,38 @@ class _LoginPageState extends State<LoginPage>{
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 100,),
-                  Text("Welcome",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w500, color: Colors.white)),
-                  SizedBox(height: 6,),
-                  Text("Login",style: TextStyle(fontSize: 40,color: Colors.white),),
-                  SizedBox(height: 6,),
+                  SizedBox(
+                    height: 100,
+                  ),
+                  Text("HelloMyApp.",
+                      style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white)),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Text(
+                    "Login",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
                   //Text("Firebase Login Assignment",style: TextStyle(fontSize: 20,color: Colors.white),),
-                  
                 ],
               ),
               Column(
                 children: <Widget>[
                   Container(
                     width: 450.0,
-                    color:  Color(0xFFFFFFFf),
+                    color: Color(0xFFFFFFFf),
                     //height:100.0,
                     child: TextField(
                       controller: emailController,
-
                       decoration: InputDecoration(
-                        
-                        labelText: "อีเมลล์",
-                        labelStyle: TextStyle(fontSize: 20,color: Colors.grey),
+                        labelText: "อีเมล",
+                        labelStyle: TextStyle(fontSize: 20, color: Colors.grey),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
@@ -83,20 +100,20 @@ class _LoginPageState extends State<LoginPage>{
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(
                               color: Colors.red,
-                            )
-                        ),
+                            )),
                       ),
                     ),
                   ),
-          
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
-                    color:  Color(0xFFFFFFFf),
+                    color: Color(0xFFFFFFFf),
                     child: TextField(
                       controller: passwordController,
                       decoration: InputDecoration(
                         labelText: "รหัสผ่าน",
-                        labelStyle: TextStyle(fontSize: 20,color: Colors.grey),
+                        labelStyle: TextStyle(fontSize: 20, color: Colors.grey),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
@@ -107,41 +124,53 @@ class _LoginPageState extends State<LoginPage>{
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(
                               color: Colors.red,
-                            )
-                        ),
+                            )),
                       ),
                     ),
                   ),
-                  SizedBox(height: 12,),
+                  SizedBox(
+                    height: 12,
+                  ),
                   InkWell(
-                  
-                    child: Align(                 
+                    child: Align(
                       alignment: Alignment.topRight,
-                      child: Text("ลืมรหัสผ่าน ?",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600),                          
-                    ),
+                      child: Text(
+                        "ลืมรหัสผ่าน ?",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w600),
                       ),
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return ResetPage();
-                        }));
-                      },
+                    ),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ResetPage();
+                      }));
+                    },
                   ),
-                   
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Container(
                     height: 50,
                     width: double.infinity,
                     child: FlatButton(
-                      onPressed: (){
+                      onPressed: () {
                         signIn();
                       },
                       padding: EdgeInsets.all(0),
                       child: Ink(
-                      
                         child: Container(
                           alignment: Alignment.center,
-                          constraints: BoxConstraints(maxWidth: double.infinity,minHeight: 50),
-                          child: Text("เข้าสู่ระบบ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                          constraints: BoxConstraints(
+                              maxWidth: double.infinity, minHeight: 50),
+                          color: Colors.green,
+                          child: Text(
+                            "เข้าสู่ระบบ",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                       shape: RoundedRectangleBorder(
@@ -149,9 +178,12 @@ class _LoginPageState extends State<LoginPage>{
                       ),
                     ),
                   ),
-                  SizedBox(height: 16,),
-                  
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
                 ],
               ),
               Padding(
@@ -159,14 +191,25 @@ class _LoginPageState extends State<LoginPage>{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("ยังไม่มีบัญชี?",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    Text(
+                      "ยังไม่มีบัญชี?",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
                           return SignUp();
                         }));
                       },
-                      child: Text("สมัครสมาชิก",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                      child: Text(
+                        "สมัครสมาชิก",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     )
                   ],
                 ),
@@ -177,13 +220,15 @@ class _LoginPageState extends State<LoginPage>{
       ),
     );
   }
-  signIn(){
-    _auth.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim()
-    ).then((user) {
+
+  signIn() {
+    _auth
+        .signInWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim())
+        .then((user) {
       print("signed in ${user.email}");
-      checkAuth(context);  // add here
+      checkAuth(context); // add here
     }).catchError((error) {
       print(error.message);
       scaffoldKey.currentState.showSnackBar(SnackBar(
@@ -193,7 +238,7 @@ class _LoginPageState extends State<LoginPage>{
     });
   }
 
-    Future checkAuth(BuildContext context) async {
+  Future checkAuth(BuildContext context) async {
     FirebaseUser user = await _auth.currentUser();
     if (user != null) {
       print("Already singed-in with");
@@ -201,8 +246,4 @@ class _LoginPageState extends State<LoginPage>{
           context, MaterialPageRoute(builder: (context) => HomePage(user)));
     }
   }
- }
-
-
-
-
+}

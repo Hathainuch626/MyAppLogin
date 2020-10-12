@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff00796b) ,
+          backgroundColor: Color(0xFFE66D0A) ,
           title: Text("My Firebase App", style: TextStyle(color: Colors.white)),
           actions: <Widget>[
             IconButton(
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
                 })
           ],
         ),
-        backgroundColor: Colors.green[200],
+        backgroundColor: Colors.deepOrange[200],
         body: Container(
             child: Center(
                 child:
